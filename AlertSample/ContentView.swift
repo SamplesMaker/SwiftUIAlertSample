@@ -9,8 +9,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var showAlert = false
+    
+    var alert: Alert {
+      Alert(title: Text("안내"), message: Text("테스트성공?"), dismissButton: .default(Text("확인")))
+    }
+    
     var body: some View {
-        Text("Hello, World!")
+        Button(action: { self.showAlert.toggle() }) {
+            Text("Show Alert")
+        }.alert(isPresented: $showAlert, content: { self.alert })
     }
 }
 
